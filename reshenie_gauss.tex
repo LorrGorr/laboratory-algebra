@@ -1,0 +1,102 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=2cm]{geometry}
+
+\title{Решение системы методом Гаусса}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Даны матрицы A и B.
+\[
+\left(
+\begin{array}{ccc}
+1 & 1 & 2\\
+2 & 3 & 1\\
+3 & 2 & 4
+\end{array}
+\right),
+\qquad
+\left(
+\begin{array}{c}
+7\\
+8\\
+14
+\end{array}
+\right).
+\]
+
+Рассмотрим расширенную матрицу системы (A|B):
+\[
+\left(
+\begin{array}{ccc|c}
+1 & 1 & 2 & 7\\
+2 & 3 & 1 & 8\\
+3 & 2 & 4 & 14
+\end{array}
+\right).
+\]
+
+Приведём матрицу к ступенчатому виду методом Гаусса:
+\[
+\left(
+\begin{array}{ccc|c}
+1 & 1 & 2 & 7\\
+2 & 3 & 1 & 8\\
+3 & 2 & 4 & 14
+\end{array}
+\right)
+\xrightarrow{\substack{R_2\leftarrow R_2-2R_1}}
+\left(
+\begin{array}{ccc|c}
+1 & 1 & 2 & 7\\
+0 & 1 & -3 & -6\\
+3 & 2 & 4 & 14
+\end{array}
+\right)
+\xrightarrow{\substack{R_3\leftarrow R_3-3R_1}}
+\left(
+\begin{array}{ccc|c}
+1 & 1 & 2 & 7\\
+0 & 1 & -3 & -6\\
+0 & -1 & -2 & -7
+\end{array}
+\right)
+\]
+
+\[
+\xrightarrow{R_3\leftarrow R_3+R_2}
+\left(
+\begin{array}{ccc|c}
+1 & 1 & 2 & 7\\
+0 & 1 & -3 & -6\\
+0 & 0 & -5 & -13
+\end{array}
+\right)
+\xrightarrow{R_3\leftarrow -R_3}
+\left(
+\begin{array}{ccc|c}
+1 & 1 & 2 & 7\\
+0 & 1 & -3 & -6\\
+0 & 0 & 5 & 13
+\end{array}
+\right).
+\]
+
+В последней матрице все три строки ненулевые. Поэтому
+\[
+\operatorname{rank}(A)=\operatorname{rank}(A|B)=3,
+\]
+
+Так как
+\[
+\operatorname{rank}(A)=\operatorname{rank}(A|B)=3!=n, где n = 4,
+\]
+то система совместна и имеет бесконечное число решений.
+
+\end{document}
